@@ -82,7 +82,10 @@ module.exports = rc((loadConfig) => {
           cb(null, file)
         })
         .catch((err) => {
-          cb(new Error(PLUGIN_NAME, err))
+          cb(new Error(PLUGIN_NAME, err.message, {
+            stack: err.stack,
+            showStack: true
+          }))
         })
     })
   })
